@@ -6,9 +6,9 @@ module.exports = function(app) {
     // db.Example.findAll({}).then(function(dbExamples) {
     //   res.json(dbExamples);
     // });
-    db.Product.findOne({
+    db.Product.findAll({
       where: {
-        id: req.params.id
+        productId: req.params.productId
       },
       include: [db.Product]
     }).then(function(dbProduct) {
