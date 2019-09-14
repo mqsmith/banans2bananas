@@ -7,7 +7,79 @@ body {
   min-height: 100vh;
   flex-direction: column;
   background-color: rgb(172,176,201);
+  font-family: "Times New Roman", Times, serif;
 }
+
+.nav-wrapper{
+background-color: black;
+}
+
+.input-field{
+  background-color: white;
+  width: 60%;
+  margin: auto;
+  border-radius: 50px 50px 50px 50px;   
+}
+
+#cheapest_item{
+  margin: auto;
+
+}
+.card{
+ 
+  
+  width: 90%;
+  margin-left: 26px;
+
+}
+
+#action{
+ 
+  background-color: white;
+  border-top: 2px solid red;
+}
+
+#item-info{
+  background-color: white;
+  color: black;
+}
+
+.page-footer{
+  background-color: black;
+  color: white;
+}
+#shop_smarter{
+  text-align: center;
+}
+
+
+img {
+    max-width:100%;
+    height:auto;
+}
+
+#logo{
+  width:60px;
+  height: 60px;
+}
+
+
+#logo2{
+  width:40px;
+  height: 40px;
+}
+
+#product_image{
+width:250px;
+ background-color: rgb(211, 20, 20);
+}
+#datalist{
+  font-size: 18px ;
+  color: rgb(4, 4, 102);
+ font-weight: bold;
+
+}
+=======
 
 main {
   flex: 1 0 auto;
@@ -62,3 +134,4 @@ height: 60px;
 width:40px;
 height: 40px;
 }
+
