@@ -22,24 +22,29 @@ module.exports = function(app) {
     //   res.json(dbExamples);
     // });
     res.json([
-      { id: 1,
+      {
+        id: 1,
         productName: "banana",
-        upc: 0000000094011,
-        image: "https://www.kroger.com/product/images/medium/front/0000000094011"
+        upc: "0000000094011",
+        image:
+          "https://www.kroger.com/product/images/medium/front/0000000094011"
       },
-      { id: 2,
+      {
+        id: 2,
         productName: "apple",
-        upc: 0000000094012,
+        upc: "0000000094012",
         image: "https://fillmurray.com/200/300"
       },
-      { id: 3,
+      {
+        id: 3,
         productName: "pear",
-        upc: 0000000094013,
+        upc: "0000000094013",
         image: "https://fillmurray.com/200/400"
       },
-      { id: 4,
+      {
+        id: 4,
         productName: "coconut",
-        upc: 0000000094014,
+        upc: "0000000094014",
         image: "https://fillmurray.com/200/500"
       }
     ]);
@@ -60,6 +65,4 @@ module.exports = function(app) {
       res.json(dbProduct);
     });
   });
-
-
 };
