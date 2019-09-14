@@ -57,7 +57,7 @@ module.exports = function(app) {
     // insert into our table. In this case we just we pass in an object with a text
     // and complete property (req.body)
     db.Product.create({
-      product_name: req.body.product_name,
+      productName: req.body.productName,
       upc: req.body.upc,
       price: req.body.price
     }).then(function(dbProduct) {
