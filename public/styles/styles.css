@@ -1,3 +1,48 @@
 .list-group-item {
   line-height: 2.5;
 }
+body{
+  background-color: rgb(172, 176, 201);
+  font-family: "Times New Roman", Times, serif;
+}
+
+.nav-wrapper{
+background-color: black;
+}
+
+.input-field{
+  background-color: white;
+  width: 60%;
+  margin: auto;
+  border-radius: 50px 50px 50px 50px;   
+}
+
+#cheapest_item{
+  margin: auto;
+
+}
+.card{
+ 
+  background-color: brown;
+  width: 90%;
+  margin-left: 26px;
+
+}
+
+#action{
+ 
+  background-color: white;
+}
+
+#item-info{
+  background-color: white;
+  color: black;
+}
+
+.page-footer{
+  background-color: black;
+  color: white;
+}
+#shop_smarter{
+  text-align: center;
+}
