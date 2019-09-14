@@ -32,6 +32,7 @@ background-color: black;
 #action{
  
   background-color: white;
+  border-top: 2px solid red;
 }
 
 #item-info{
@@ -45,4 +46,17 @@ background-color: black;
 }
 #shop_smarter{
   text-align: center;
+}
+#product_image{
+  background-color: rgb(211, 20, 20);
+}
+
+
+img {
+    max-width:100%;
+    height:auto;
+}
+#logo{
+  width:60px;
+  height: 60px;
 }
