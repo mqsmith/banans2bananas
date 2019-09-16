@@ -2,19 +2,31 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get route for user view
+  // app.get("/api/price/:productId", function(req, res) {
+  //   // db.Example.findAll({}).then(function(dbExamples) {
+  //   //   res.json(dbExamples);
+  //   // });
+  //   db.Product.findAll({
+  //     where: {
+  //       productId: req.params.productId
+  //     },
+  //     include: [db.Product]
+  //   }).then(function(dbProduct) {
+  //     res.json(dbProduct);
+  //   });
+  // });
+
   app.get("/api/price/:productId", function(req, res) {
-    // db.Example.findAll({}).then(function(dbExamples) {
-    //   res.json(dbExamples);
-    // });
-    db.Product.findAll({
+    db.Price.findAll({
       where: {
-        productId: req.params.productId
+        price : [[SELECT MIN(price) FROM store_products where product_id=2]]
       },
-      include: [db.Product]
-    }).then(function(dbProduct) {
-      res.json(dbProduct);
+      include: [store_id, price]
+      }).then(function(dbPrice) {
+      res.json(dbPrice);
+      });
     });
-  });
+
 
   // get route for manager view
   app.get("/api/products", function(req, res) {
