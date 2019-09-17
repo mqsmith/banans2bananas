@@ -94,7 +94,15 @@
                     <label for="price">Price</label>
                   </div>
                 </div>
+               
+
                 <div class="row">
+                    <label>Select Store</label>
+                    <select class="browser-default">
+                      <option value="" disabled selected>Choose which store this product is located...</option>
+                      <option value="1">Kroger</option>
+                      <option value="2">Walmart</option>
+                    </select>
                   <div class="row">
                     <div class="input-field col s12">
                       <button
@@ -117,7 +125,7 @@
         <div class="col s1">&nbsp;</div>
 
         <div class="col s6" id="showItems">
-          <div class="card-panel" id = "productsTable">
+          <div class="card-panel" id="productsTable">
             <!-- <table class="responsive-table striped">
               <thead>
                 <tr>
@@ -189,7 +197,6 @@
       </div>
     </footer>
 
-    <script type="text/javascript" src = "js/index.js">
-    </script>
+    <script type="text/javascript" src="js/index.js"></script>
   </upc>
 </html>
