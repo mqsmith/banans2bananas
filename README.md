@@ -9,22 +9,22 @@
 
 The Following technologies were used to develop the Application;
 
-i. HTML
-ii. Materialize
-iii. Database : mysql
-iv. Node.js
-v. javascript/jquery
+1. HTML
+2. Materialize
+3. Database : mysql
+4. Node.js
+5. javascript/jquery
 
-vi. Dependencies include;
-    1. body-parser
-    2. npm modules
-    3. Sequelize
-    4. express
-    5. path
-    6. dotenv
-    7. nodemon
-    8. elint
-    9. prettier formater
+6. Dependencies include;
+        1. body-parser
+        2. npm modules
+        3. Sequelize
+        4. express
+        5. path
+        6. dotenv
+        7. nodemon
+        8. elint
+        9. prettier formater
 
 **RoadMap**
 
