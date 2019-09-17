@@ -131,18 +131,17 @@ function getProducts() {
   $.get("/api/products", function(data) {
     console.log(data[0]);
     if (data.length !== 0) {
-      var header = $("<table>");
-      header.addClass("header");
-      header.prepend(
-        "<thead>" +
-          "<tr>" +
-          "<th>Product Name</th>" +
-          "<th>UPC</th>" +
-          "</tr></thead>"
+      var table = $("<table>");
+      table.addClass("header");
+      var header = $("<thead>");
+      table.append(header);
+      header.append(
+        "<tr>" + "<th>Product Name</th>" + "<th>UPC</th>" + "</tr>"
       );
       var tbody = $("<tbody>");
       for (var i = 0; i < data.length; i++) {
         var row = $("<tr>");
+        header.append(row);
         row.addClass("product");
         row.append(
           "<td>" +
