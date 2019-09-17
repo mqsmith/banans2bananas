@@ -36,6 +36,13 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
+Object.keys(db).forEach(function (modelName) {
+  console.log(db[modelName].seed);
+  if (db[modelName].seed) {
+    db[modelName].seed();
+  }
+});
+
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
