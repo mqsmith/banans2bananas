@@ -133,12 +133,25 @@ function getProducts() {
     if (data.length !== 0) {
       var header = $("<table>");
       header.addClass("header");
-      header.prepend("<thead>" + "<tr>"+ "<th>Product Name</th>" + "<th>UPC</th>" + "</tr></thead>");
+      header.prepend(
+        "<thead>" +
+          "<tr>" +
+          "<th>Product Name</th>" +
+          "<th>UPC</th>" +
+          "</tr></thead>"
+      );
       var tbody = $("<tbody>");
       for (var i = 0; i < data.length; i++) {
         var row = $("<tr>");
         row.addClass("product");
-        row.append("<td>" + data[i].productName + "</td>"+ "<td>" + data[i].upc + "</td></tr>");
+        row.append(
+          "<td>" +
+            data[i].productName +
+            "</td>" +
+            "<td>" +
+            data[i].upc +
+            "</td></tr>"
+        );
         // row.append("<td>" + data.price + "</td>" + "</tr>");
         $("#productsTable").prepend(row);
       }
