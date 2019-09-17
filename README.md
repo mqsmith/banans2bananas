@@ -27,4 +27,5 @@ vi. Dependencies include;
     9. prettier formater
 
 **RoadMap**
+
 Currently we added products and stores to be able develop the MVP. Our plan for the future is to integrate actual store apis.
