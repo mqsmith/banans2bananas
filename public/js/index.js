@@ -97,3 +97,38 @@ var handleDeleteBtnClick = function() {
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+
+//=========================================================
+//=========================================================
+//=========================================================
+
+$("#addItemButton").on("click", function(event) {
+  event.preventDefault();
+
+  // Make a newItem object
+  var newItem = {
+    productName: $("#productName").val(),
+    upc: $("#upc").val(),
+    price: $("#price").val()
+  };
+
+  console.log(newItem);
+
+  // Send an AJAX POST-request with jQuery
+  $.post("/api/products", newItem)
+    // On success, run the following code
+    .then(function() {
+      var row = $("<div>");
+      row.addClass("product");
+
+      row.append("<p>" + newItem.productName + "</p>");
+      row.append("<p>" + newItem.upc + "</p>");
+      row.append("<p>" + newItem.price + "</p>");
+
+      $("#showItems").prepend(row);
+    });
+
+  // Empty each input box by replacing the value with an empty string
+  $("#productName").val("");
+  $("#upc").val("");
+});

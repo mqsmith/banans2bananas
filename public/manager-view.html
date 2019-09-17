@@ -10,28 +10,39 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Manager View</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.min.css"
+      media="screen,projection"
+    />
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-
-
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/styles.css" />
   </head>
 
-  <body>
+  <upc>
     <!--[if lt IE 7]>
       <p class="browsehappy">
         You are using an <strong>outdated</strong> browser. Please
@@ -40,149 +51,145 @@
     <![endif]-->
 
     <div class="container">
-        <nav>
-            <div class="nav-wrapper">
-        <a href="/" class="brand-logo"><img src="assets/images/banana2bananaLogo.jpg"id="logo"></a>
-       
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li>
-            <a href="/"><i class="material-icons left">search</i></a>
-          </li>
-          <li><a href="collapsible.html">Cart</a></li>
-          <li><a href="/adminView">Admin</a></li>
-          <li><a href="sass.html"></a></li>
-          <li><a href="sass.html"></a></li>
-          <li><a href="sass.html"></a></li>
-        </ul>
-      </div>
-    </nav>
-    <br>
-      <br>
- <div class="row"> 
+      <nav>
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo"
+            ><img src="assets/images/banana2bananaLogo.jpg" id="logo"
+          /></a>
 
-
-<div class="col s5" id="additems">
-      <div class="card-panel" >
-         <div class="row">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="name" type="text" />
-                <label for="first_name">Product Name</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="upc" type="text" />
-                <label for="upc">UPC</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="price" type="text" />
-                <label for="price">Price</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="row">
-                <div class="input-field col s12">
-                  <button
-                    class="btn cyan waves-effect waves-light right"
-                    id="add-item-button"
-                    type="submit"
-                    name="action"
-                  >
-                    Add Item
-                    <i class="mdi-content-send right"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </form>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+              <a href="/"><i class="material-icons left">search</i></a>
+            </li>
+            <li><a href="collapsible.html">Cart</a></li>
+            <li><a href="/adminView">Admin</a></li>
+            <li><a href="sass.html"></a></li>
+            <li><a href="sass.html"></a></li>
+            <li><a href="sass.html"></a></li>
+          </ul>
         </div>
-		
+      </nav>
+      <br />
+      <br />
+      <div class="row">
+        <div class="col s5" id="additems">
+          <div class="card-panel">
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="productName" type="text" />
+                    <label for="first_name">Product Name</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="upc" type="text" />
+                    <label for="upc">UPC</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input id="price" type="text" />
+                    <label for="price">Price</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <button
+                        class="btn cyan waves-effect waves-light right"
+                        id="addItemButton"
+                        type="submit"
+                        name="action"
+                      >
+                        Add Item
+                        <i class="mdi-content-send right"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col s1">&nbsp;</div>
+
+        <div class="col s6" id="showItems">
+          <div class="card-panel">
+            <!-- <table class="responsive-table striped">
+              <thead>
+                <tr>
+                  <th>Product Name</th>
+                  <th>UPC</th>
+                  <th>Price ($)</th>
+                </tr>
+              </thead>
+              <tupc>
+                <tr>
+                  <td>Item 1</td>
+                  <td>Eclair</td>
+                  <td>$0.87</td>
+                </tr>
+                <tr>
+                  <td>Item 2</td>
+                  <td>Jellybean</td>
+                  <td>$3.76</td>
+                </tr>
+                <tr>
+                  <td>Item 3</td>
+                  <td>Lollipop</td>
+                  <td>$7.00</td>
+                </tr>
+                <tr>
+                  <td>Item 4</td>
+                  <td>Eclair</td>
+                  <td>$0.87</td>
+                </tr>
+                <tr>
+                  <td>Item 5</td>
+                  <td>Jellybean</td>
+                  <td>$3.76</td>
+                </tr>
+                <tr>
+                  <td>Item 6</td>
+                  <td>Lollipop</td>
+                  <td>$7.00</td>
+                </tr>
+                <tr>
+                  <td>Item 7</td>
+                  <td>Eclair</td>
+                  <td>$0.87</td>
+                </tr>
+                <tr>
+                  <td>Item 8</td>
+                  <td>Jellybean</td>
+                  <td>$3.76</td>
+                </tr>
+                <tr>
+                  <td>Item 9</td>
+                  <td>Lollipop</td>
+                  <td>$7.00</td>
+                </tr>
+              </tupc>
+            </table> -->
+          </div>
+        </div>
       </div>
     </div>
-
-<div class="col s1">&nbsp;</div>
-
-<div class="col s6" id="showItems">
-
-      <div class="card-panel">
-        
-      <table class="responsive-table striped">
-        <thead>
-          <tr>
-            <th>Product Name</th>
-            <th>UPC</th>
-            <th>Price ($)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Item 1</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Item 2</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Item 3</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-          <tr>
-            <td>Item 4</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Item 5</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Item 6</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-          <tr>
-            <td>Item 7</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Item 8</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Item 9</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-        </tbody>
-      </table>
-
-
-      </div>
-    </div>
-
-</div>  
-</div>
     <footer class="page-footer">
       <div class="footer-copyright">
         <div class="container">
           © 2019 Copyright
-        <a class="grey-text text-lighten-4 right" href="#!"><img src="assets/images/banana2bananaLogo.jpg" id="logo2"></a>  
-          
+          <a class="grey-text text-lighten-4 right" href="#!"
+            ><img src="assets/images/banana2bananaLogo.jpg" id="logo2"
+          /></a>
         </div>
       </div>
     </footer>
 
-    <script src="" async defer></script>
-  </body>
+    <script type="text/javascript" src = "js/index.js">
+    </script>
+  </upc>
 </html>
