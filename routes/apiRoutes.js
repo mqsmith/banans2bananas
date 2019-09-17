@@ -1,53 +1,67 @@
 var db = require("../models");
-
+var sequelize = require("sequelize");
 module.exports = function(app) {
   // Get route for user view
-  app.get("/api/price/:productId", function(req, res) {
+  app.get("/api/price/1", function(req, res) {
     // db.Example.findAll({}).then(function(dbExamples) {
     //   res.json(dbExamples);
     // });
-    db.Product.findAll({
+    db.Price.findAll({
+      attributes: ["StoreId", "Price"],
       where: {
-        productId: req.params.productId
-      },
-      include: [db.Product]
-    }).then(function(dbProduct) {
-      res.json(dbProduct);
+        price: [
+          sequelize.literal(
+            "(SELECT MIN (price) FROM Prices where ProductId=1)"
+          ),
+          "price"
+        ]
+      }
+    }).then(function(dbPrice) {
+      res.json(dbPrice);
     });
   });
 
+  //   db.Price.findAll({
+  //     where: {
+  //       productId: req.params.productId
+  //     }
+  //   }).then(function(dbPrice) {
+  //     res.json(dbPrice);
+  //   });
+  // });
+
   // get route for manager view
   app.get("/api/products", function(req, res) {
-    // db.Example.findAll({}).then(function(dbExamples) {
-    //   res.json(dbExamples);
-    // });
-    res.json([
-      {
-        id: 1,
-        productName: "banana",
-        upc: "0000000094011",
-        image:
-          "https://www.kroger.com/product/images/medium/front/0000000094011"
-      },
-      {
-        id: 2,
-        productName: "apple",
-        upc: "0000000094012",
-        image: "https://fillmurray.com/200/300"
-      },
-      {
-        id: 3,
-        productName: "pear",
-        upc: "0000000094013",
-        image: "https://fillmurray.com/200/400"
-      },
-      {
-        id: 4,
-        productName: "coconut",
-        upc: "0000000094014",
-        image: "https://fillmurray.com/200/500"
-      }
-    ]);
+    db.Product.findAll({}).then(function(dbProduct) {
+      res.json(dbProduct);
+    });
+    // res.json([
+    //   {
+    //     id: 1,
+    //     productName: "banana",
+    //     upc: "0000000094011",
+    //     image:
+    //       "https://www.kroger.com/product/images/medium/front/0000000094011"
+    //   },
+    //   {
+    //     id: 2,
+    //     productName: "apple",
+    //     upc: "0000000094012",
+    //     image: "https://fillmurray.com/200/300"
+    //   },
+    //   {
+    //     id: 3,
+    //     productName: "pear",
+    //     upc: "0000000094013",
+    //     image: "https://fillmurray.com/200/400"
+    //   },
+    //   {
+    //     id: 4,
+    //     productName: "coconut",
+    //     upc: "0000000094014",
+    //     image: "https://fillmurray.com/200/500"
+    //   }
+    // ]);
   });
 
   // POST route for manager view
