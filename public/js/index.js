@@ -104,31 +104,35 @@ $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
 $("#addItemButton").on("click", function(event) {
   event.preventDefault();
-
   // Make a newItem object
   var newItem = {
     productName: $("#productName").val(),
     upc: $("#upc").val(),
     price: $("#price").val()
   };
-
   console.log(newItem);
-
   // Send an AJAX POST-request with jQuery
   $.post("/api/products", newItem)
     // On success, run the following code
-    .then(function() {
-      var row = $("<div>");
-      row.addClass("product");
-
-      row.append("<p>" + newItem.productName + "</p>");
-      row.append("<p>" + newItem.upc + "</p>");
-      row.append("<p>" + newItem.price + "</p>");
-
-      $("#showItems").prepend(row);
-    });
-
+    .then(getProducts);
   // Empty each input box by replacing the value with an empty string
   $("#productName").val("");
   $("#upc").val("");
+  $("#price").val("");
 });
+function getProducts() {
+  $.get("/api/products", function(data) {
+    console.log(data[0]);
+    if (data.length !== 0) {
+      for (var i = 0; i < data.length; i++) {
+        var row = $("<div>");
+        row.addClass("product");
+        row.append("<tr>" + "<td>" + data[i].productName + "</td>");
+        row.append("<td>" + data[i].upc + "</td>" + "</tr>");
+        // row.append("<td>" + data.price + "</td>" + "</tr>");
+        $("#productsTable").prepend(row);
+      }
+    }
+  });
+}
+getProducts();
