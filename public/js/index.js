@@ -108,17 +108,24 @@ $("#addItemButton").on("click", function(event) {
   var newItem = {
     productName: $("#productName").val(),
     upc: $("#upc").val(),
-    price: $("#price").val()
+    price: $("#price").val(),
+    storeId: $("select")
+      .find(":selected")
+      .val()
   };
   console.log(newItem);
   // Send an AJAX POST-request with jQuery
   $.post("/api/products", newItem)
     // On success, run the following code
     .then(getProducts);
+  $.post("/api/price", newItem)
+    // On success, run the following code
+    .then(console.log("post successful"));
   // Empty each input box by replacing the value with an empty string
   $("#productName").val("");
   $("#upc").val("");
   $("#price").val("");
+  $("select").val("");
 });
 function getProducts() {
   $.get("/api/products", function(data) {
