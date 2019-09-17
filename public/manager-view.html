@@ -94,17 +94,20 @@
                     <label for="price">Price</label>
                   </div>
                 </div>
-               
 
                 <div class="row">
-                    <label>Select Store</label>
-                    <select class="browser-default">
-                      <option value="" disabled selected>Choose which store this product is located...</option>
-                      <option value="1">Kroger</option>
-                      <option value="2">Walmart</option>
-                    </select>
+                  <label>Select Store</label>
+                  <select class="browser-default">
+                    <option value="" disabled selected
+                      >Choose which store this product is located...</option
+                    >
+                    <option value="1">Kroger</option>
+                    <option value="2">Walmart</option>
+                  </select>
                   <div class="row">
                     <div class="input-field col s12">
+                      <br />
+
                       <button
                         class="btn cyan waves-effect waves-light right"
                         id="addItemButton"
@@ -125,7 +128,8 @@
         <div class="col s1">&nbsp;</div>
 
         <div class="col s6" id="showItems">
-          <div class="card-panel" id="productsTable">
+          <div class="card-panel">
+            <table id="productsTable"></table>
             <!-- <table class="responsive-table striped">
               <thead>
                 <tr>
