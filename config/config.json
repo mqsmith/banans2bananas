@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Pass321",
+    "password": "password1",
     "database": "b2b_db",
     "host": "localhost",
     "dialect": "mysql"

@@ -36,6 +36,9 @@ body {
 #shop_smarter {
   text-align: center;
 }
+#search_bar {
+  text-align: center;
+}
 #product_image {
   width: 250px;
   background-color: rgb(211, 20, 20);
