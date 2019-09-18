@@ -68,7 +68,7 @@ $("#searchButton").on("click", function(event) {
   console.log(searchItem);
   // Send an AJAX POST-request with jQuery
   $.get("/api/products/" + searchItem, function(data) {
-    console.log(data);
+    console.log(data.split(" "));
   })
     // On success, run the following code
     .then();
