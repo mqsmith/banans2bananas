@@ -43,21 +43,6 @@ module.exports = function(app) {
     });
   });
 
-  // app.post("/api/price", function(req, res) {
-  //   console.log(req.body);
-  //   // create takes an argument of an object describing the item we want to
-  //   // insert into our table. In this case we just we pass in an object with a text
-  //   // and complete property (req.body)
-  //   db.Price.create({
-  //     price: req.body.price,
-  //     StoreId: req.body.storeId
-  //   }).then(function(dbPrice) {
-  //     // We have access to the new todo as an argument inside of the callback function
-  //     console.log("Price Table Updated");
-  //     res.json(dbPrice);
-  //   });
-  // });
-
   // get route for manager view
   app.get("/api/products", function(req, res) {
     db.Product.findAll({}).then(function(dbProduct) {
@@ -67,10 +52,6 @@ module.exports = function(app) {
 
   // POST route for manager view
   app.post("/api/products", function(req, res) {
-    // db.Product.create({
-    //   productName: req.body.productName,
-    //   upc: req.body.upc
-    // })
     db.Product.findOrCreate({
       where: {
         productName: req.body.productName.toLowerCase(),
@@ -80,11 +61,7 @@ module.exports = function(app) {
       .then(([dbProduct, created]) => {
         console.log(dbProduct);
         console.log("Created? ", created);
-        // console.log("PRODUCTid: " + dbProduct.dataValues.id);
-        // db.Price.findOrCreate({
-        //   where: { ProductId: 157, StoreId: 1 },
-        //   defaults: { ProductId: 157, price: req.body.price, StoreId: 1 }
-        // });
+
         db.Price.findOrCreate({
           where: {
             ProductId: dbProduct.dataValues.id,
