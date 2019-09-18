@@ -3,10 +3,10 @@ var sequelize = require("sequelize");
 module.exports = function(app) {
   // Get route for user view
   app.get("/api/products/:productName", function(req, res) {
-    console.log(req.params.productName);
+    console.log(req.params.productName.toLowerCase());
     db.Product.findOne({
       where: {
-        productName: req.params.productName
+        productName: req.params.productName.toLowerCase()
       }
     }).then(function(dbProduct) {
       console.log(dbProduct.dataValues.id);
@@ -73,7 +73,7 @@ module.exports = function(app) {
     // })
     db.Product.findOrCreate({
       where: {
-        productName: req.body.productName,
+        productName: req.body.productName.toLowerCase(),
         upc: req.body.upc
       }
     })

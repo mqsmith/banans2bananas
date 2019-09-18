@@ -4,133 +4,121 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
+  <!--<![endif]-->
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
 
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
     <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.min.css"
+      media="screen,projection"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
 
-
-    <link rel="stylesheet" href="styles/styles.css">
-</head>
-
-<body>
+  <body>
     <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
 
     <div class="container">
-        <nav>
-            <div class="nav-wrapper">
-                <a href="/" class="brand-logo"><img src="assets/images/banana2bananaLogo.jpg"id="logo"></a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="/"><i class="material-icons left">search</i></a></li>
+      <nav>
+        <div class="nav-wrapper">
+          <a href="/" class="brand-logo"
+            ><img src="assets/images/banana2bananaLogo.jpg" id="logo"
+          /></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+              <a href="/"><i class="material-icons left">search</i></a>
+            </li>
 
-
-                    <li><a href="collapsible.html">Cart</a></li>
-                    <li><a href="/adminView">Admin</a></li>
-                    <li><a href="sass.html"></a></li>
-                    <li><a href="sass.html"></a></li>
-                    <li><a href="sass.html"></a></li>
-                </ul>
-            </div>
-        </nav>
-        <br>
-      
+            <li><a href="collapsible.html">Cart</a></li>
+            <li><a href="/adminView">Admin</a></li>
+            <li><a href="sass.html"></a></li>
+            <li><a href="sass.html"></a></li>
+            <li><a href="sass.html"></a></li>
+          </ul>
+        </div>
+      </nav>
+      <br />
+      <div class="container">
         <div class="row" id="shop_smarter">
-        <h3>Shop Smarter not Harder</h3>
-    <p>Find the best prices for the items that you want</p>
-    </div>
+          <h3>Shop Smarter not Harder</h3>
+          <p>Find the best prices for the items that you want</p>
+        </div>
         <div class="row">
-            
-            <form>
-                
-                    <div class="row">
-                            <div class="input-field col s6">
-                              <input id="search" type="text" />
-                              <label for="search">Search</label>
-                            </div>
-                            <a class="waves-effect waves-light btn" id="searchButton">Search</a>
-                          </div>
-            </form>
+          <form>
+            <div class="row">
+              <div class="input-field col s6 offset-m3" id="search_bar">
+                <input id="search" type="text" />
+                <label for="search">Search</label>
+              </div>
+              <a class="waves-effect waves-light btn" id="searchButton"
+                >Search</a
+              >
+            </div>
+          </form>
         </div>
-        
-<div class="row">
-<div class="col s3">&nbsp;</div>
-<div class="col s6">
-    <div class="card">
-        <div class="card-image " >
-            <img class="responsive-img" src="assets/images/tool_sander.jpeg"id="product_image">
-         
-            
+
+        <div class="row">
+          <div class="col s3">&nbsp;</div>
+          <div class="col s6">
+            <div class="card">
+              <div class="card-image ">
+                <img
+                  class="responsive-img"
+                  src="/images/store-collage.jpg"
+                  id="store_image"
+                />
+              </div>
+
+              <div class="card-action" id="action">
+                <ul id="datalist"></ul>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        <div class="card-action" id="action">
-            <ul id="datalist">
-                
-                    <li>
-                    Store Name:
-                </li>
-    
-                <li>
-                    Product Name:
-                </li>
-                <li>
-                    Price:
-                </li>
-                <li>
-                    ....savings:
-                </li>
-               
-    
-        </div>
-    </div>
-
-
-
-
-
-</div>
-
-
-
-</div>
-
-
-
-        
-
+      </div>
     </div>
 
     <script type="text/javascript" src="js/index.js"></script>
     <footer class="page-footer">
-        
-        <div class="footer-copyright">
-            <div class="container">
-                © 2019 Copyright
-                <a class="grey-text text-lighten-4 right" href="#!"><img src="assets/images/banana2bananaLogo.jpg" id="logo2"></a>
-            </div>
+      <div class="footer-copyright">
+        <div class="container">
+          © 2019 Copyright
+          <a class="grey-text text-lighten-4 right" href="#!"
+            ><img src="assets/images/banana2bananaLogo.jpg" id="logo2"
+          /></a>
         </div>
+      </div>
     </footer>
-</body>
-
+  </body>
 </html>

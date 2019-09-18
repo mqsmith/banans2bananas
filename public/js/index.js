@@ -65,13 +65,24 @@ $("#searchButton").on("click", function(event) {
   // Make a newItem object
   console.log("clicked");
   var searchItem = $("#search").val();
-  console.log(searchItem);
-  // Send an AJAX POST-request with jQuery
+  console.log(searchItem.toLowerCase());
+
   $.get("/api/products/" + searchItem, function(data) {
     console.log(data.split(" "));
-  })
-    // On success, run the following code
-    .then();
+    let savings = data.split(" ");
+    $("#datalist").empty();
+    $("#datalist").append("<h2>Lowest Price</h2>");
+    $("#datalist").append("<li><h3>Item: " + searchItem + "</h3></li>");
+    $("#datalist").append(
+      "<li><h3>" + savings[2] + " " + savings[3] + "</h3></li>"
+    );
+    // the age
+    $("#datalist").append(
+      "<li><h3>" + savings[0] + " $" + savings[1] + "</h3></li>"
+    );
+  });
+  // On success, run the following code
+
   // $.post("/api/price", newItem)
   //   // On success, run the following code
   //   .then(console.log("post successful"));
