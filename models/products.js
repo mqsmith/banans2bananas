@@ -15,17 +15,17 @@ module.exports = function(sequelize, DataTypes) {
   //   });
   // };
 
-  Product.seed = function() {
-    console.log("called seed product");
-    Product.create({
-      productName: "bananas",
-      upc: "0000000094011"
-    });
-    Product.create({
-      productName: "toilet paper",
-      upc: "0000000094015"
-    });
-  };
+  // Product.seed = function() {
+  //   console.log("called seed product");
+  //   Product.create({
+  //     productName: "bananas",
+  //     upc: "0000000094011"
+  //   });
+  //   Product.create({
+  //     productName: "toilet paper",
+  //     upc: "0000000094015"
+  //   });
+  // };
 
   return Product;
 };
