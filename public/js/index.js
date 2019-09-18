@@ -28,6 +28,7 @@ function getProducts() {
   $.get("/api/products", function(data) {
     console.log(data[0]);
     if (data.length !== 0) {
+      $("#productsTable").empty();
       var table = $("<table>");
       table.addClass("header");
       var header = $("<thead>");
@@ -66,9 +67,11 @@ $("#searchButton").on("click", function(event) {
   var searchItem = $("#search").val();
   console.log(searchItem);
   // Send an AJAX POST-request with jQuery
-  $.get("/api/products/" + searchItem)
+  $.get("/api/products/" + searchItem, function(data) {
+    console.log(data);
+  })
     // On success, run the following code
-    .then(console.log(searchItem));
+    .then();
   // $.post("/api/price", newItem)
   //   // On success, run the following code
   //   .then(console.log("post successful"));

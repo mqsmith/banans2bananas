@@ -26,7 +26,19 @@ module.exports = function(app) {
           ]
         }
       }).then(function(dbPrice) {
-        console.log(dbPrice[0].dataValues);
+        console.log(dbPrice[0].dataValues.StoreId);
+        db.Store.findOne({
+          where: {
+            id: dbPrice[0].dataValues.StoreId
+          }
+        }).then(function(dbStore) {
+          let minPrice = "Price: " + dbPrice[0].dataValues.Price;
+          let productName = "Store: " + dbStore.dataValues.storeName;
+          console.log(minPrice);
+          console.log(productName);
+          res.json(minPrice + " " + productName);
+        });
+        // console.log(dbProduct.dataValues.productName);
       });
     });
   });
