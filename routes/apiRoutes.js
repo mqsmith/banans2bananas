@@ -4,29 +4,30 @@ module.exports = function(app) {
   // Get route for user view
   app.get("/api/products/:productName", function(req, res) {
     console.log(req.params.productName);
-    db.Product.findAll({
+    db.Product.findOne({
       where: {
         productName: req.params.productName
       }
     }).then(function(dbProduct) {
       console.log(dbProduct.dataValues.id);
-      var storedProductId = 7;
-      console.log("storedProductId:" + storedProductId);
-      // db.Price.findAll({
-      //   attributes: ["StoreId", "Price"],
-      //   where: {
-      //     price: [
-      //       sequelize.literal(
-      //         "(SELECT MIN (price) FROM Prices where ProductId=" +
-      //           storedProductId +
-      //           ")"
-      //       ),
-      //       "price"
-      //     ]
-      //   }
-      // }).then(function(dbPrice) {
-      //   console.log(dbPrice);
-      // });
+      console.log("Product ID: " + dbProduct.dataValues.id);
+      var storedProductId = dbProduct.dataValues.id;
+      console.log(storedProductId);
+      db.Price.findAll({
+        attributes: ["StoreId", "Price"],
+        where: {
+          price: [
+            sequelize.literal(
+              "(SELECT MIN (price) FROM Prices where ProductId=" +
+                storedProductId +
+                ")"
+            ),
+            "price"
+          ]
+        }
+      }).then(function(dbPrice) {
+        console.log(dbPrice[0].dataValues);
+      });
     });
   });
 
