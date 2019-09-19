@@ -1,99 +1,91 @@
-// Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+//ADMIN PAGE JS
 
-// The API object contains methods for each kind of request we'll make
-var API = {
-  saveExample: function(example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
-  getExamples: function() {
-    return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  }
-};
-
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
-
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
-};
-
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
+//The on-click function that created the new item and sends it to the Products table and the price table.
+$("#addItemButton").on("click", function(event) {
   event.preventDefault();
-
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  // Make a newItem object
+  var newItem = {
+    productName: $("#productName").val(),
+    upc: $("#upc").val(),
+    price: $("#price").val(),
+    storeId: $("select")
+      .find(":selected")
+      .val()
   };
-
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
-
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  console.log(newItem);
+  // Send an AJAX POST-request to the products api route with jQuery
+  $.post("/api/products", newItem)
+    // On success, run the following code
+    .then(getProducts);
+  // Empty each input box by replacing the value with an empty string
+  $("#productName").val("");
+  $("#upc").val("");
+  $("#price").val("");
+  $("select").val("");
+});
+//Funtion to make an AJAX GET-request to the products table
+function getProducts() {
+  $.get("/api/products", function(data) {
+    console.log(data[0]);
+    //If the returning data is NOT 0 then target the producsTable area to populate the table.
+    if (data.length !== 0) {
+      $("#productsTable").empty();
+      var table = $("<table>");
+      table.addClass("header");
+      var header = $("<thead>");
+      table.append(header);
+      header.append(
+        "<tr>" + "<th>Product Name</th>" + "<th>UPC</th>" + "</tr>"
+      );
+      var tbody = $("<tbody>");
+      //For loop to create a table row with each line returned from the Products table.
+      for (var i = 0; i < data.length; i++) {
+        var row = $("<tr>");
+        header.append(row);
+        row.addClass("product");
+        row.append(
+          "<td>" +
+            data[i].productName +
+            "</td>" +
+            "<td>" +
+            data[i].upc +
+            "</td></tr>"
+        );
+        // row.append("<td>" + data.price + "</td>" + "</tr>");
+        $("#productsTable").prepend(row);
+      }
+      tbody.append("</tbody>");
+      $("#productsTable").prepend(header);
+    }
   });
+}
+//Call the above function on page load to populate the table.
+getProducts();
 
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
+//INDEX PAGE JS
 
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
+//The on-click function that sends an AJAX call to the GET-route to query the Poducts table to start a chain of queries that return the lowest pice for an item.
+$("#searchButton").on("click", function(event) {
+  event.preventDefault();
+  console.log("clicked");
+  //Creates a new searchItem variable.
+  var searchItem = $("#search").val();
+  console.log(searchItem.toLowerCase());
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
+  $.get("/api/products/" + searchItem, function(data) {
+    console.log(data.split(" "));
+    let savings = data.split(" ");
+    $("#datalist").empty();
+    $("#datalist").append("<h2>Lowest Price</h2>");
+    $("#datalist").append("<li><h3>Item: " + searchItem + "</h3></li>");
+    $("#datalist").append(
+      "<li><h3>" + savings[2] + " " + savings[3] + "</h3></li>"
+    );
+    // the age
+    $("#datalist").append(
+      "<li><h3>" + savings[0] + " $" + savings[1] + "</h3></li>"
+    );
   });
-};
-
-// Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+  // Empty each input box by replacing the value with an empty string
+  $("#search").val("");
+});
