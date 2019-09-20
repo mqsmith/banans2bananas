@@ -12,6 +12,7 @@ $("#addItemButton").on("click", function(event) {
       .find(":selected")
       .val()
   };
+
   console.log(newItem);
   // Send an AJAX POST-request to the products api route with jQuery
   $.post("/api/products", newItem)
@@ -22,6 +23,7 @@ $("#addItemButton").on("click", function(event) {
   $("#upc").val("");
   $("#price").val("");
   $("select").val("");
+  alert("Product Successfully added");
 });
 //Funtion to make an AJAX GET-request to the products table
 function getProducts() {

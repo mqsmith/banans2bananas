@@ -15,6 +15,9 @@ body {
 #cheapest_item {
   margin: auto;
 }
+#addProductLabel{
+  color: black;
+}
 .card {
   width: 90%;
   margin-left: 26px;
